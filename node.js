@@ -11,7 +11,7 @@ res.render("index");
 });
 
 app.get("/formulario",function(req,res){
-	res.render("formulario");
+	res.render("formulario",{title: 'HOLA'});
 });
 
 
