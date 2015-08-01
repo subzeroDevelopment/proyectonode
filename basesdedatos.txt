@@ -7,7 +7,7 @@ para abrir la consola de mongo se usa el comado:
 	mongo
 
 para crear la base de datos comentarios, en la consola de mongo usamos:
-	use comentarios
+	use peliculas
 
 y ya esta!!!
 
@@ -21,15 +21,9 @@ ejecutamos:
 para abrir la consola de mongo se ejecuta:
 	mongo.exe
 
-para crear la base de datos comentarios, en la consola de mongo usamos:
+para crear la base de datos peliculas, en la consola de mongo usamos:
 	use comentarios
 
 y ya esta!!!
 
 
-En postgresql
-crean una base de datos netflix
-la contraseña sera: pelicula
-y el usuario: postgres
-
-y ya esta!!!
