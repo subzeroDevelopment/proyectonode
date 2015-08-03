@@ -1,0 +1,10 @@
+extends ./layout.jade
+block content
+	h1 CRUD DE PELICULAS
+	section(class="span6 center-block")
+		ul
+			each x in peliculas
+				li(value="x.titule+''+x.year")
+				input(type="submit" value="Actualizar" href="/actualizar")
+				input(type="submit" value="Eliminar" href="/eliminar)
+		input(type="submit" value="Agregar" href="/agregar)
