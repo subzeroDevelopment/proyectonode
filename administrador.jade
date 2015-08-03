@@ -1,0 +1,9 @@
+extends ./layout.jade
+block content
+	h1 ACCESO PARA ADMINISTRADORES
+	section(class="span6 center-block")
+		form(class="form-signin" method="POST" action="/verificacion")
+			h2 NOMBRE DEL USUARIO:
+			input(type="text" placeholder="Ingresa tu nombre de usuario" name="user")
+			input(type="password" value="Ingresa tu password" name="password")
+			input(type="submit")
