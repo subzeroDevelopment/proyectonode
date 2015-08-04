@@ -1,6 +1,7 @@
 extends ./layout.jade
 block content
-	div(class="container")
+	br
+	div(class="container center-block")
 		div(class="row")
 			div(class="text-center span8")
 				div(id="carousel-example-generic" class="carousel slide" data-ride="carousel")
@@ -36,9 +37,20 @@ block content
 					a(class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next")
 						span(class="glyphicon glyphicon-chevron-right" aria-hidden="true")
 						span(class="sr-only")&#9654;
-					
-				
-			
+	br
+	div(class="container")			
+		each peli in peliculas
+			div(class="well span10 center-block")
+				div(class="media")
+					div(class="media-left")
+						a(href="#")
+							img(class="media-object" src="#{peli.Poster}" alt="")
+				div(class="media-body")
+					h4(class="media-heading")
+						h5 #{peli.Title}
+						h5 #{peli.Plot}
+						a(href="/pelicula/#{peli._id}") ver mas
+
 		
 		
 

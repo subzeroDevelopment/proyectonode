@@ -1,8 +1,51 @@
 extends ./layout.jade
 block content
-	h1 Detalles de una pelicula 
-	each pelicula in peliculas
-		h5= pelicula
+	div(class="well span12 center-block")
+		div(class="panel panel-info center-block")
+			div(class="panel-heading center-block")
+				div(class="panel-body")
+					table
+						tr
+							th(width="40%") 
+								img(class="img-responsive" src="#{peli.Poster}" alt="")
 
+							th 	
+								table 
+									tr
+										th 
+											div  Titulo: #[small #{peli.Title}]
+											div  Año: #[small #{peli.Year}]
+											div  Clasificacion: #[small #{peli.Rated}]
+											div  Estreno: #[small #{peli.Released}]
+											div  Duracion: #[small #{peli.Runtime}]
+											div  Genero: #[small #{peli.Genre}]
+											div  Director(s): #[small #{peli.Director}]
+											div  Escritor(s): #[small #{peli.Writer}]
+											div  Actores: #[small #{peli.Actors}]
+										th 
+											div  Lenguaje: #[small #{peli.Language}]
+											div  Localizacion: #[small #{peli.Country}]
+											div  Premios: #[small #{peli.Awards}]
+											div  -
+											div  -
+											div  -
+											div  -
+											div  -
+											div  -
 
+								h4 Sipnosis
+								h5 #{peli.Plot}
 
+				div(class="panel panel-info center-block")
+					div( class="span6" )
+						formform(class="form-signin" method="POST" action="/comentario")
+							h2(class="form-signin-heading") Nombre
+							input(type="text" required  name="titulo" class="input-block-level" onkeypress="upperCase('titulo');")
+							h5 Email
+							input(type="text" required name="fechaa" class="col_6" class="input-block-level")
+							textarea(type="text" required name="texto" rows="5" placeholder="Comentario" class="input-block-level")
+							button(class="btn btn-large btn-primary" type="submit") Crear
+
+					button(class="btn btn-large btn-primary"  type="submit") Ver comentarios
+			
+					h4 aqi van los comentarios

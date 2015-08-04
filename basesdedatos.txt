@@ -6,8 +6,10 @@ En mongo
 para abrir la consola de mongo se usa el comado:
 	mongo
 
-para crear la base de datos comentarios, en la consola de mongo usamos:
-	use peliculas
+para crear la base de datos netflix, en la consola de mongo usamos:
+	use netflix
+
+para cargar los datos copiar y pegar en la consola el contenido del archivo salida.txt
 
 y ya esta!!!
 
@@ -21,9 +23,12 @@ ejecutamos:
 para abrir la consola de mongo se ejecuta:
 	mongo.exe
 
-para crear la base de datos peliculas, en la consola de mongo usamos:
-	use comentarios
+para crear la base de datos netflix, en la consola de mongo usamos:
+	use netflix
+
+para cargar los datos copiar y pegar en la consola el contenido del archivo salida.txt
 
 y ya esta!!!
+
 
 

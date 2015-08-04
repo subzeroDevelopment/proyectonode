@@ -1,3 +1,28 @@
 extends ./layout.jade
 block content
-	h1 Actualizar pelicula
+	div(class="well span12 center-block")
+		div(class="panel panel-info center-block")
+			div(class="panel-heading center-block")
+				div(class="panel-body")
+					div( class="span6" class="center-block")
+						form(class="form-signin" method="POST" action="/pelicula/#{peli.id}?_method=put")
+							h2(class="form-signin-heading") Modificar pelicula
+							input(type="text" required value="#{peli.Title}"  name="titulo" placeholder="Titulo" class="input-block-level" onkeypress="upperCase('titulo');")
+							input(type="text" required value="#{peli.Year}" name="año" class="col_6" placeholder="Año" class="input-block-level")
+							input(type="text" required value="#{peli.Rated}" name="clasificacion" class="col_6" placeholder="clasificacion" class="input-block-level")
+							input(type="text" required value="#{peli.Released}" name="estreno" class="col_6" placeholder="estreno" class="input-block-level")
+							input(type="text" required value="#{peli.Runtime}" name="duracion" class="col_6" placeholder="duracion" class="input-block-level")
+							input(type="text" required value="#{peli.Genre}" name="generos" class="col_6" placeholder="generos" class="input-block-level")
+							input(type="text" required value="#{peli.Director}" name="director" class="col_6" placeholder="director" class="input-block-level")
+							input(type="text" required value="#{peli.Writer}" name="escritor" class="col_6" placeholder="escritor" class="input-block-level")
+							input(type="text" required value="#{peli.Actors}" name="actores" class="col_6" placeholder="actores" class="input-block-level")
+							input(type="text" required value="#{peli.Language}" name="lenguaje" class="col_6" placeholder="lenguaje" class="input-block-level")
+							input(type="text" required value="#{peli.Country}" name="locacion" class="col_6" placeholder="locacion" class="input-block-level")
+							input(type="text" required value="#{peli.Awards}" name="premios" class="col_6" placeholder="premios" class="input-block-level")
+							textarea(type="text" required  name="texto"  placeholder="Sinopsis" class="input-block-level") #{peli.Plot}
+							input(type="file" name="imagen" class="input-block-level")
+							br
+							button(class="btn btn-large btn-primary" type="submit") Guardar
+
+
+

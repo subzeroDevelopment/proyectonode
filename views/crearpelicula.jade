@@ -1,12 +1,27 @@
 extends ./layout.jade
 block content
-	div( class="span6" class="center-block")
-		form(class="form-signin" method="POST" class="evento" action="#" id="evento" runat="server" enctype='multipart/from-data')
-			h2(class="form-signin-heading") Nuevo
-			input(type="text" required  name="titulo" placeholder="Titulo del aviso" class="input-block-level" onkeypress="upperCase('titulo');")
-			h5 fecha 
-			input(type="date" required name="fechaa" class="col_6" placeholder="2014-10-26" class="input-block-level")
-			textarea(type="text" required name="texto" rows="5" placeholder="Texto del aviso" class="input-block-level")
-			button(class="btn btn-large btn-primary" type="submit") Crear
+	div(class="well span12 center-block")
+		div(class="panel panel-info center-block")
+			div(class="panel-heading center-block")
+				div(class="panel-body")
+					div( class="span6" class="center-block")
+						form(class="form-signin" method="POST" action="/crearpeli")
+							h2(class="form-signin-heading") Nueva pelicula
+							input(type="text" required  name="titulo" placeholder="Titulo" class="input-block-level" onkeypress="upperCase('titulo');")
+							input(type="text" required name="año" class="col_6" placeholder="Año" class="input-block-level")
+							input(type="text" required name="clasificacion" class="col_6" placeholder="clasificacion" class="input-block-level")
+							input(type="text" required name="estreno" class="col_6" placeholder="estreno" class="input-block-level")
+							input(type="text" required name="duracion" class="col_6" placeholder="duracion" class="input-block-level")
+							input(type="text" required name="generos" class="col_6" placeholder="generos" class="input-block-level")
+							input(type="text" required name="director" class="col_6" placeholder="director" class="input-block-level")
+							input(type="text" required name="escritor" class="col_6" placeholder="escritor" class="input-block-level")
+							input(type="text" required name="actores" class="col_6" placeholder="actores" class="input-block-level")
+							input(type="text" required name="lenguaje" class="col_6" placeholder="lenguaje" class="input-block-level")
+							input(type="text" required name="locacion" class="col_6" placeholder="locacion" class="input-block-level")
+							input(type="text" required name="premios" class="col_6" placeholder="premios" class="input-block-level")
+							textarea(type="text" required name="texto" rows="5" placeholder="Sinopsis" class="input-block-level")
+							input(type="file" name="imagen" class="input-block-level")
+							br
+							button(class="btn btn-large btn-primary" type="submit") Guardar
 
 

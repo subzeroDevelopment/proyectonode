@@ -1,10 +1,35 @@
 extends ./layout.jade
 block content
-	h1 CRUD DE PELICULAS
-	section(class="span6 center-block")
-		ul
-			each x in peliculas
-				li(value="x.titule+''+x.year")
-				input(type="submit" value="Actualizar" href="/actualizar")
-				input(type="submit" value="Eliminar" href="/eliminar)
-		input(type="submit" value="Agregar" href="/agregar)
+	div(class="well span12 center-block")
+		div(class="panel panel-info center-block")
+			div(class="panel-heading center-block")
+				div(class="panel-heading")
+					h3(class="panel-title") CRUD DE PELICULAS
+				div(class="panel-body")
+					table(class="table table-bordered table-hover " data-sortable="true" data-toggle="table" )
+						thead 
+							tr
+								th Titulo
+									a(href="/newpelicula")
+										img(src="imgs/add.png" class="center-block" width="20px")
+								th Año		    
+								th Accion     
+						tbody 
+							each x in peliculas
+								tr(class="info" )
+									td #{x.Title}
+									td #{x.Year}
+									td 
+										a(href="/pelicula/edit/#{x._id}") 
+											img(src="imgs/pencil.png" width="15px")
+										a(href="/pelicula/#{x._id}/delete") 
+											img(src="imgs/minus.png" width="15px")
+							tr 
+								td 
+									a(href="/registraralumno/")
+									i(class="icon-plus-sign")
+
+
+							
+
+		
