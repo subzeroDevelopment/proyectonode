@@ -1,0 +1,11 @@
+
+create table comentarios
+(	ID  SERIAL PRIMARY KEY,
+	idpelicula varchar (80),
+	nombre varchar (500),
+	email varchar (500),
+	comentario varchar (500)
+);
+
+
+insert into comentarios (idpelicula, nombre, email,comentario) values ('55c08a97aaa9f55d53155a','yo','jja@g.com','est pelicula esta superchingona');

@@ -10,6 +10,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser({uploadDir: '/public/imgs/M'}));
 app.use(method_override("_method"));
+
+//postgres
+var conString = "postgres://postgres:pelicula@127.0.0.1/comentarios";
+var client = new pg.Client(conString);
+client.connect();         
+//
+
 //mongo
 mongoose.connect("mongodb://127.0.0.1/netflix");
 var peliculasesquema ={
@@ -52,8 +59,17 @@ Peliculas.find(function(err,documento){
 app.get("/pelicula/:id",function(req,res){
 	var idpelicula = req.params.id;
 	console.log(idpelicula);
+	var resulpost = "";
 	Peliculas.findOne({_id: idpelicula}, function(err,documento){ 
-		res.render("pelicula",{peli: documento});
+
+		client.query('SELECT * FROM comentarios where idpelicula = $1 ORDER BY id DESC', [idpelicula], function(err, result) {
+	    console.log(result.rows);
+		//res.render("pelicula", { peliculas: result.rows[0]});
+		resulpost = result.rows;
+		res.render("pelicula",{peli: documento, comentarios: resulpost});
+	    if(err) {return res.render("pelicula",{peli: documento});}  });
+
+		
 		console.log(documento);
 	});
 });
@@ -176,31 +192,75 @@ app.post("/verificacion",function(req,res){
 
 
 
-app.get("/newcomentario",function(req,res){
-	res.render("crearcomentario");
-});
-
 app.post("/comentario",function(req,res){
 	console.log(req.body);
-	var data ={
-	  "Title" : req.body.titulo,
-	  "Poster" : req.body.comentario,
-
-	};
-	var peli = new Peliculas(data);
-	peli.save(function(err){
-		console.log(peli);
-		res.redirect("/comentarios");
-	})
 	
+	var data = {
+		idpelicula : req.body.idpelicula,
+		nombre : req.body.nombre, 
+		email : req.body.correo,
+		comentario : req.body.comentario 
+		};
+
+        // SQL Query > Insert Data
+        client.query("INSERT INTO comentarios (idpelicula, nombre, email,comentario) values($1, $2, $3, $4)", [data.idpelicula, data.nombre, data.email, data.comentario]);
+
+		res.redirect("/pelicula/"+ req.body.idpelicula);
+	
+ 
 });
 
 
-app.get("/comentarios",function(req,res){
-	Peliculas.find(function(err,documento){
-		res.render("comentario",{comentarios: documento});
-	});
+app.get("/comentario/edit/:id",function(req,res){
+	var idcomen = req.params.id;
+	console.log(idcomen);
+	client.query('SELECT * FROM comentarios where id = $1 ', [idcomen], function(err, result) {
+	    console.log(result.rows);
+		res.render("modificarcomentario",{comentario: result.rows});
+	    if(err) {return res.redirect("/");}  });
 
+});
+
+
+app.put("/comentario/:id",function(req,res){
+	var idcomentario = req.params.id;
+	console.log(idcomentario);
+	
+	var data = {
+		idpelicula : req.body.idpelicula,
+		nombre : req.body.nombre, 
+		email : req.body.correo,
+		comentario : req.body.comentario 
+		};
+    console.log(data)
+        // SQL Query > Update Data
+        client.query("UPDATE comentarios SET idpelicula=($1), nombre=($2), email=($3),comentario=($4) where id=($5)", [data.idpelicula, data.nombre, data.email, data.comentario, idcomentario], function(err, result) {
+		res.redirect("/pelicula/"+ data.idpelicula);
+		//res.redirect("/pelicula");
+	    if(err) {return res.redirect("/");  }  });
+});
+
+app.get("/comentario/:id/delete",function(req,res){
+	var idcomen = req.params.id;
+	console.log(idcomen);
+	client.query('SELECT * FROM comentarios where id = $1 ', [idcomen], function(err, result) {
+	    console.log(result.rows);
+		res.render("eliminarcomentario",{comentario: result.rows});
+	    if(err) {return res.redirect("/");}  });
+	
+
+
+});
+
+app.delete ("/comentario/:id",function(req,res){
+	var idcomentario = req.params.id;
+	console.log(idcomentario);
+
+
+        client.query("DELETE FROM comentarios WHERE id=($1)",[idcomentario], function(err, result) {
+		//res.redirect("/pelicula/"+ req.body.idpelicula);
+		res.redirect("/");
+	    if(err) {return res.redirect("/");  }  });
 });
 
 app.listen(8080);

@@ -9,8 +9,6 @@ para abrir la consola de mongo se usa el comado:
 para crear la base de datos netflix, en la consola de mongo usamos:
 	use netflix
 
-para cargar los datos copiar y pegar en la consola el contenido del archivo salida.txt
-
 y ya esta!!!
 
 
@@ -26,9 +24,17 @@ para abrir la consola de mongo se ejecuta:
 para crear la base de datos netflix, en la consola de mongo usamos:
 	use netflix
 
-para cargar los datos copiar y pegar en la consola el contenido del archivo salida.txt
+
+En postgresql
+-- colocar como contraseña del usuario postgres : pelicula
+si el usuario postgres ya cuenta con una contraseña editar el archivo node.js en la linea 15
+
+	var conString = "postgres://postgres:contraseña@127.0.0.1/comentarios";
+
+y colocar la contraseña existente 
+ Crear una base de datos llamada comentarios , una vez creada selccionar la base de datos y abrir el editor sql en donde 
+ hay que copiar y pegar los comandos existentes en el archivo comentariospostgres.txt
 
 y ya esta!!!
-
 
 

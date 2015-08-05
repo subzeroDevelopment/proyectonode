@@ -36,16 +36,24 @@ block content
 								h4 Sipnosis
 								h5 #{peli.Plot}
 
-				div(class="panel panel-info center-block")
-					div( class="span6" )
-						formform(class="form-signin" method="POST" action="/comentario")
-							h2(class="form-signin-heading") Nombre
-							input(type="text" required  name="titulo" class="input-block-level" onkeypress="upperCase('titulo');")
-							h5 Email
-							input(type="text" required name="fechaa" class="col_6" class="input-block-level")
-							textarea(type="text" required name="texto" rows="5" placeholder="Comentario" class="input-block-level")
-							button(class="btn btn-large btn-primary" type="submit") Crear
+	div(class="panel panel-info center-block")
+		div( class="span6" )
+			form(class="form-signin" method="POST" action="/comentario")
+				h2(class="form-signin-heading") Nombre
+				input(type="text" required  name="nombre" class="input-block-level")
+				h5 Email
+				input(type="text" required name="correo" class="col_6" class="input-block-level")
+				input(type="text" required name="idpelicula" value="#{peli.id}"  class="col_6" class="input-block-level")
+				textarea(type="text" required name="comentario" rows="5" placeholder="Comentario" class="input-block-level")
+				button(class="btn btn-large btn-primary" type="submit") Crear
 
-					button(class="btn btn-large btn-primary"  type="submit") Ver comentarios
+	button(class="btn btn-large btn-primary"  type="submit") Ver comentarios
 			
-					h4 aqi van los comentarios
+	each x in comentarios
+		h4 #{x.nombre}
+		h4 #{x.email}
+		h4 #{x.comentario}
+		a(href="/comentario/edit/#{x.id}") 
+			img(src="/imgs/pencil.png" width="15px")
+		a(href="/comentario/#{x.id}/delete") 
+			img(src="/imgs/minus.png" width="15px")
