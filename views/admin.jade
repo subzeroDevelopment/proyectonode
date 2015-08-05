@@ -4,8 +4,9 @@ block content
 
 	section(class="container")
 		form(class="form-signin" method="POST" action="/verificacion")
-			h2(class="form-signin-heading") Acceso de administrador
-			input(type="text" placeholder="Usuario" class="input-block-level" name="user")
+			h1(class="form-signin-heading") Acceso al Sistema
+			h4 Usuario:
+			input(type="text" placeholder="Nombre de usuario" class="input-block-level" name="user")
+			h4 Contraseña:
 			input(type="password" placeholder="Contraseña" class="input-block-level" name="password")
-			button(class="btn btn-large btn-primary center-block" type="submit") Entrar
-  
+			button(class="btn btn-large btn-primary center-block botonLogin" type="submit") Entrar
