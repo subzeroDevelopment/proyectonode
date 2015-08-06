@@ -8,6 +8,7 @@ para abrir la consola de mongo se usa el comado:
 
 para crear la base de datos netflix, en la consola de mongo usamos:
 	use netflix
+para cargar los datos copiar y pegar en la consola de mongo el contenido del archivo: datosmongo.txt
 
 y ya esta!!!
 
@@ -23,7 +24,7 @@ para abrir la consola de mongo se ejecuta:
 
 para crear la base de datos netflix, en la consola de mongo usamos:
 	use netflix
-
+para cargar los datos copiar y pegar en la consola de mongo el contenido del archivo: datosmongo.txt
 
 En postgresql
 -- colocar como contraseña del usuario postgres : pelicula
