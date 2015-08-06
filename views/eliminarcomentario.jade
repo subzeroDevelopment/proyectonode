@@ -1,0 +1,15 @@
+extends ./layout.jade
+block content
+	div(class="panel panel-info center-block")
+		div( class="span6" )
+			each x in comentario
+				form(class="form-signin" method="POST" action="/comentario/#{x.id}?_method=delete")
+					h2(class="form-signin-heading") Nombre
+					input(type="text" required disabled value="#{x.nombre}" name="nombre" class="input-block-level")
+					h5 Email
+					input(type="text" required disabled value="#{x.email}" name="correo" class="col_6" class="input-block-level")
+					input(type="text" required disabled name="idpelicula" value="#{x.idpelicula}"  class="col_6" class="input-block-level")
+					textarea(type="text" required disabled  name="comentario"  placeholder="Sinopsis" class="input-block-level") #{x.comentario}
+					button(class="btn btn-large btn-primary" type="submit") Crear
+
+	
