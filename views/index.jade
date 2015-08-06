@@ -1,8 +1,5 @@
 extends ./layout.jade
 block content
-	div(class="page-header")
-		<img src="/imgs/titulo.png" class="center-block img-responsive banner" alt="">
-
 	nav(class="navbar navbar-default" style="background-color: #037E8C;")
 		div(class="container-fluid")
 			div(class="navbar-header")
@@ -11,22 +8,22 @@ block content
 					span(class="icon-bar")
 					span(class="icon-bar")
 					span(class="icon-bar")
-				a(class="navbar-brand navegacion" href="#")
+				a(class="navbar-brand navegacion" href="/")
 					img(alt="" src="/imgs/titulo-icono.png" style="width: 1.5em; height: 1.5em;")
 			div(class="collapse navbar-collapse" id="bs-example-navbar-collapse-1")
 				ul(class="nav navbar-nav navbar-right")
 					li(class="active")
-						a(href="index.html" style="color: black;") Inicio
+						a(href="/" style="color: black;") Inicio
 						span(class="sr-only") (current)
 					li
-						a(href="nosotros.html" style="color: white;") Nosotros
+						a(href="#" style="color: white;") Pelicula
 					li
-						a(href="contacto.html" style="color: white;") Contacto
+						a(href="/login" style="color: white;") Login
 
 	div(class="container")
 		div(class="row")
 			div(class="col-md-12 text-center")
-				div(id="carousel-example-generic" class="carousel slide" data-ride="carousel")
+				div(id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="border: 4px solid #024959; border-radius: 5px;")
 					ol(class="carousel-indicators")
 						li(data-target="#carousel-example-generic" data-slide-to="0" class="active")
 						li(data-target="#carousel-example-generic" data-slide-to="1")
@@ -60,4 +57,4 @@ block content
 						div(class="caption")
 						div(class="well text-center") #{peli.Title}
 						div(class="text-right")
-							a(href="/pelicula/#{peli._id}" class="btn btn-info btn-sm" role="button") Ver mas...
+							a(href="/pelicula/#{peli._id}" class="btn btn-info btn-sm" role="button") Más información
