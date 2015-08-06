@@ -12,7 +12,7 @@ app.use(bodyParser({uploadDir: '/public/imgs/M'}));
 app.use(method_override("_method"));
 
 //postgres
-var conString = "postgres://postgres:pass%word0@127.0.0.1/comentarios";
+var conString = "postgres://postgres:@127.0.0.1/comentarios";
 var client = new pg.Client(conString);
 client.connect();         
 //
