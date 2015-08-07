@@ -35,7 +35,7 @@ block content
 							input(type="text" class="form-control" id="campoNombre" name="nombre" value="#{x.nombre}" disabled required)
 							label(for="campoCorreo") Correo
 							input(type="email" class="form-control" id="campoCorreo" name="correo" value="#{x.email}" disabled required)
-							input(type="hidden" class="form-control" id="campoCorreo" name="idpelicula" value="#{x.idpelicula}" disabled required)
+							input(type="hidden" class="form-control" id="campoCorreo" name="idpelicula" value="#{x.idpelicula}" required)
 							label(for="campoComentario") Comentario
 							textarea(class="form-control" rows="5" id="campoComentario" name="comentario" placeholder="Comentario" disabled required) #{x.comentario}
 							button(type="submit" class="btn btn-danger") Eliminar
