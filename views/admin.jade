@@ -1,6 +1,26 @@
 extends ./layout.jade
-block content
+block link
 	link(href="css/login.css" rel="stylesheet")
+block content
+	nav(class="navbar navbar-default" style="background-color: #037E8C;")
+		div(class="container-fluid")
+			div(class="navbar-header")
+				button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="background-color: #024959;")
+					span(class="sr-only") Toggle navigation
+					span(class="icon-bar")
+					span(class="icon-bar")
+					span(class="icon-bar")
+				a(class="navbar-brand navegacion" href="/")
+					img(alt="" src="/imgs/titulo-icono.png" style="width: 1.5em; height: 1.5em;")
+			div(class="collapse navbar-collapse" id="bs-example-navbar-collapse-1")
+				ul(class="nav navbar-nav navbar-right")
+					li
+						a(href="/" style="color: white;") Inicio
+					li
+						a(href="#" style="color: white;") Pelicula
+					li(class="active")
+						a(href="/login" style="color: black;") Login
+						span(class="sr-only") (current)
 
 	section(class="container")
 		form(class="form-signin" method="POST" action="/verificacion")

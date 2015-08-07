@@ -1,48 +1,84 @@
 extends ./layout.jade
 block content
-	div(class="container")
+	nav(class="navbar navbar-default" style="background-color: #037E8C;")
+		div(class="container-fluid")
+			div(class="navbar-header")
+				button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" style="background-color: #024959;")
+					span(class="sr-only") Toggle navigation
+					span(class="icon-bar")
+					span(class="icon-bar")
+					span(class="icon-bar")
+				a(class="navbar-brand navegacion" href="/")
+					img(alt="" src="/imgs/titulo-icono.png" style="width: 1.5em; height: 1.5em;")
+			div(class="collapse navbar-collapse" id="bs-example-navbar-collapse-1")
+				ul(class="nav navbar-nav navbar-right")
+					li
+						a(href="/" style="color: white;") Inicio
+					li(class="active")
+						a(href="#" style="color: black;") Pelicula
+						span(class="sr-only") (current)
+					li
+						a(href="/login" style="color: white;") Login
+
+	div(class="container" style="background-color: #FFFFFA; border: 4px solid #024959; border-radius: 5px;")
+		div(class="row" style="background-color: #D96459;")
+			div(class="col-md-12")
+				h1 #[strong(style="color: white;") #{peli.Title}]
+		br
 		div(class="row")
-			div(class="col-md-4")
+			div(class="col-md-4 text-center")
 				img(src="#{peli.Poster}" class="img-responsive" alt="")
 			div(class="col-md-8 text-justify")
-				table(class="table table-bordered")
-					tbody
-						div Titulo: #[small #{peli.Title}]
-						div Año: #[small #{peli.Year}]
-						div Clasificacion: #[small #{peli.Rated}]
-						div Estreno: #[small #{peli.Released}]
-						div Duracion: #[small #{peli.Runtime}]
-						div Genero: #[small #{peli.Genre}]
-						div Director(s): #[small #{peli.Director}]
-						div Escritor(s): #[small #{peli.Writer}]
-						div Actores: #[small #{peli.Actors}]
-					tbody
-						div Lenguaje: #[small #{peli.Language}]
-						div Localizacion: #[small #{peli.Country}]
-						div Premios: #[small #{peli.Awards}]
-					tbody
-						h4 Sipnosis
-						h5 #{peli.Plot}
+				p Año: #[small #{peli.Year}]
+				p Clasificacion: #[small #{peli.Rated}]
+				p Estreno: #[small #{peli.Released}]
+				p Duracion: #[small #{peli.Runtime}]
+				p Genero: #[small #{peli.Genre}]
+				p Director(s): #[small #{peli.Director}]
+				p Escritor(s): #[small #{peli.Writer}]
+				p Actores: #[small #{peli.Actors}]
+				p Lenguaje: #[small #{peli.Language}]
+				p Localizacion: #[small #{peli.Country}]
+		div(class="row")
+			div(class="col-md-12")
+				p Premios: #[small #{peli.Awards}]
+				h3(class="text-center") Sipnosis
+				h4(class="text-justify") #{peli.Plot}
+	br
 
-			div(class="panel panel-info center-block")
-				div( class="span6" )
-					form(class="form-signin" method="POST" action="/comentario")
-						h2(class="form-signin-heading") Nombre
-							input(type="text" required  name="nombre" class="input-block-level")
-							h5 Email
-							input(type="text" required name="correo" class="col_6" class="input-block-level")
-							input(type="text" required name="idpelicula" value="#{peli.id}"  class="col_6" class="input-block-level")
-							textarea(type="text" required name="comentario" rows="5" placeholder="Comentario" class="input-block-level")
-							button(class="btn btn-large btn-primary" type="submit") Crear
+	div(class="container" style="background-color: #FFFFFA; border: 4px solid #024959; border-radius: 5px;")
+		div(class="row")
+			div(class="col-md-12 text-center")
+				form(method="post" action="/comentario")
+					div(class="form-group")
+						label(for="campoNombre") Nombre
+						input(type="text" class="form-control" id="campoNombre" name="nombre" placeholder="Juan Ruiz" required)
+						label(for="campoCorreo") Correo
+						input(type="email" class="form-control" id="campoCorreo" name="correo" placeholder="ejemplo@ejemplo.com" required)
+						input(type="hidden" class="form-control" id="campoCorreo" name="idpelicula" value="#{peli.id}" required)
+						label(for="campoComentario") Comentario
+						textarea(class="form-control" rows="5" id="campoComentario" name="comentario" placeholder="Comentario" required)
+						button(type="submit" class="btn btn-default") Crear
+	br
 
-			button(class="btn btn-large btn-primary"  type="submit") Ver comentarios
-			
-						h4 aqi van los comentarios 
-			each x in comentarios
-				h4 #{x.nombre}
-				h4 #{x.email}
-				h4 #{x.comentario}
-				a(href="/comentario/edit/#{x.id}") 
-				img(src="/imgs/pencil.png" width="15px")
-				a(href="/comentario/#{x.id}/delete") 
-				img(src="/imgs/minus.png" width="15px")
+	div(class="container" style="background-color: #FFFFFA; border: 4px solid #024959; border-radius: 5px;")
+		div(class="row")
+			div(class="col-md-12 text-center")
+				button(type="submit" class="btn btn-default") Ver Comentarios
+				h4 Aqui van los comentarios:
+		each x in comentarios
+			div(class="row" style="background-color: #8C4646;")
+				div(class="col-md-2 text-justify")
+					h3(style="color: white;") Usuario:
+					p(style="color: white;") #{x.nombre}
+					p(style="color: white;") #{x.email}
+				div(class="col-md-8 text-center")
+					h3(style="color: white;") Comentario:
+					p(style="color: white;") #{x.comentario}
+				div(class="col-md-1 text-center")
+					a(href="/comentario/edit/#{x.id}" class="btn btn-warning" role="button")
+						img(src="/imgs/pencil.png" width="30px")
+				div(class="col-md-1 text-center")
+					a(href="/comentario/#{x.id}/delete" class="btn btn-danger" role="button")
+						img(src="/imgs/minus.png" width="30px")
+			br
